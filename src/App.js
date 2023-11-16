@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import BooksList from './BooksList';
 import AddBookForm from './AddBookForm';
 import UpdateBookForm from './UpdateBookForm';
@@ -19,23 +19,13 @@ function App() {
             <li><Link to='/delete-book'>Delete Book</Link></li>
           </ul>
         </nav>
-        <Switch>
-          <Route path='/books'>
-            <BooksList />
-          </Route>
-          <Route path='/add-book'>
-            <AddBookForm />
-          </Route>
-          <Route path='/update-book'>
-            <UpdateBookForm />
-          </Route>
-          <Route path='/delete-book'>
-            <DeleteBook />
-          </Route>
-          <Route path='/'>
-            <div>Welcome to Code Monkey's Book Management</div>
-          </Route>
-        </Switch>
+        <Routes>
+          <Route path='/books' element={<BooksList />} />
+          <Route path='/add-book' element={<AddBookForm />} />
+          <Route path='/update-book' element={<UpdateBookForm />} />
+          <Route path='/delete-book' element={<DeleteBook />} />
+          <Route path='/' element={<div>Welcome to Code Monkey's Book Management</div>} />
+        </Routes>
       </div>
     </Router>
   );
