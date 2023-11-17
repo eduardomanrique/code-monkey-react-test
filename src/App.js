@@ -15,14 +15,14 @@ function App() {
             <li><Link to='/'>Home</Link></li>
             <li><Link to='/books'>List Books</Link></li>
             <li><Link to='/add-book'>Add Book</Link></li>
-            <li><Link to='/update-book'>Update Book</Link></li>
+            <li><Link to='/update-book/:bookId'>Update Book</Link></li>
             <li><Link to='/delete-book'>Delete Book</Link></li>
           </ul>
         </nav>
         <Routes>
           <Route path='/books' element={<BooksList />} />
           <Route path='/add-book' element={<AddBookForm />} />
-          <Route path='/update-book' element={<UpdateBookForm />} />
+          <Route path='/update-book/:bookId' element={<UpdateBookForm />} />
           <Route path='/delete-book' element={<DeleteBook />} />
           <Route path='/' element={<div>Welcome to Code Monkey's Book Management</div>} />
         </Routes>
