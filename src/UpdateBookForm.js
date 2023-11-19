@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
-function UpdateBookForm({ bookId, onUpdate }) {
+function UpdateBookForm() {
+  const { bookId } = useParams();
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [isbn, setIsbn] = useState('');
@@ -11,7 +13,6 @@ function UpdateBookForm({ bookId, onUpdate }) {
     axios.put(`http://localhost:3001/books/${bookId}`, { title, author, isbn })
       .then(response => {
         console.log('Book updated:', response.data);
-        onUpdate();
       })
       .catch(error => console.error('Error updating book:', error));
   };
