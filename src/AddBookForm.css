@@ -1,0 +1,32 @@
+.addBookForm {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+}
+
+.addBookForm label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.addBookForm input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+.addBookForm button {
+  background-color: #5C6BC0;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.addBookForm button:hover {
+  background-color: #3F51B5;
+}
