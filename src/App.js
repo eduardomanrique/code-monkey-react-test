@@ -4,13 +4,14 @@ import BooksList from './BooksList';
 import AddBookForm from './AddBookForm';
 import UpdateBookForm from './UpdateBookForm';
 import DeleteBook from './DeleteBook';
+import './NavBar.css';
 
 function App() {
   return (
     <Router>
       <div className='App'>
         <h1>Code Monkey</h1>
-        <nav>
+        <nav className='navBar'>
           <ul>
             <li><Link to='/'>Home</Link></li>
             <li><Link to='/books'>List Books</Link></li>

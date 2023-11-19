@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './AddBookForm.css';
 
 function AddBookForm() {
   const [title, setTitle] = useState('');
@@ -16,7 +17,7 @@ function AddBookForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className='addBookForm' onSubmit={handleSubmit}>
       <label>Title:
         <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
       </label>
