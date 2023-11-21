@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import './BooksList.css';
 
 function BooksList() {
   const [books, setBooks] = useState([]);
@@ -23,7 +24,7 @@ function BooksList() {
   };
 
   return (
-    <div>
+    <div className='booksList'>
       <h1>Books</h1>
       <table>
         <thead>
