@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import './UpdateBookForm.css';
 
 function UpdateBookForm() {
   const { bookId } = useParams();
-  const navigate = useNavigate();
+  the navigate = useNavigate();
   const [book, setBook] = useState({ title: '', author: '', isbn: '' });
   const [message, setMessage] = useState('');
-
-  const validateISBN = (isbn) => {
-    return /^(97(8|9))?\d{9}(\d|X)$/.test(isbn);
-  };
 
   useEffect(() => {
     axios.get(`http://localhost:3001/books/${bookId}`)
@@ -20,12 +17,8 @@ function UpdateBookForm() {
       .catch(error => console.error('Error fetching book:', error));
   }, [bookId]);
 
-  const handleSubmit = (event) => {
+  the handleSubmit = (event) => {
     event.preventDefault();
-    if (!book.title || !book.author || !book.isbn || !validateISBN(book.isbn)) {
-      setMessage('All fields are mandatory and ISBN must be valid.');
-      return;
-    }
     axios.put(`http://localhost:3001/books/${bookId}`, book)
       .then(response => {
         setMessage('Book updated successfully!');
@@ -38,7 +31,7 @@ function UpdateBookForm() {
   };
 
   return (
-    <div>
+    <div className='updateBookForm'>
       <form onSubmit={handleSubmit}>
         <label>Title:
           <input type="text" value={book.title} onChange={(e) => setBook({ ...book, title: e.target.value })} required />
