@@ -8,6 +8,10 @@ function UpdateBookForm() {
   const [book, setBook] = useState({ title: '', author: '', isbn: '' });
   const [message, setMessage] = useState('');
 
+  const validateISBN = (isbn) => {
+    return /^(97(8|9))?\d{9}(\d|X)$/.test(isbn);
+  };
+
   useEffect(() => {
     axios.get(`http://localhost:3001/books/${bookId}`)
       .then(response => {
@@ -18,6 +22,10 @@ function UpdateBookForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (!book.title || !book.author || !book.isbn || !validateISBN(book.isbn)) {
+      setMessage('All fields are mandatory and ISBN must be valid.');
+      return;
+    }
     axios.put(`http://localhost:3001/books/${bookId}`, book)
       .then(response => {
         setMessage('Book updated successfully!');
@@ -31,15 +39,15 @@ function UpdateBookForm() {
 
   return (
     <div>
-      <form className='updateBookForm' onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <label>Title:
-          <input type="text" value={book.title} onChange={(e) => setBook({ ...book, title: e.target.value })} />
+          <input type="text" value={book.title} onChange={(e) => setBook({ ...book, title: e.target.value })} required />
         </label>
         <label>Author:
-          <input type="text" value={book.author} onChange={(e) => setBook({ ...book, author: e.target.value })} />
+          <input type="text" value={book.author} onChange={(e) => setBook({ ...book, author: e.target.value })} required />
         </label>
         <label>ISBN:
-          <input type="text" value={book.isbn} onChange={(e) => setBook({ ...book, isbn: e.target.value })} />
+          <input type="text" value={book.isbn} onChange={(e) => setBook({ ...book, isbn: e.target.value })} required />
         </label>
         <button type="submit">Update Book</button>
         {message && <p>{message}</p>}
