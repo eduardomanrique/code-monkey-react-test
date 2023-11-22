@@ -16,12 +16,14 @@ function BooksList() {
   }, []);
 
   const handleDelete = (bookId) => {
-    axios.delete(`http://localhost:3001/books/${bookId}`)
-      .then(() => {
-        setBooks(books.filter(book => book.id !== bookId));
-        console.log('Book deleted');
-      })
-      .catch(error => console.error('Error deleting book:', error));
+    if (window.confirm('Are you sure you want to delete this book?')) {
+      axios.delete(`http://localhost:3001/books/${bookId}`)
+        .then(() => {
+          setBooks(books.filter(book => book.id !== bookId));
+          console.log('Book deleted');
+        })
+        .catch(error => console.error('Error deleting book:', error));
+    }
   };
 
   return (
