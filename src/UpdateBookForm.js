@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
-import './AddBookForm.css';
+import './UpdateBookForm.css';
 
 function UpdateBookForm() {
   const { bookId } = useParams();
@@ -31,7 +31,7 @@ function UpdateBookForm() {
   };
 
   return (
-    <div className='addBookForm'>
+    <div className='updateBookForm'>
       <form onSubmit={handleSubmit}>
         <label>Title:
           <input type="text" value={book.title} onChange={(e) => setBook({ ...book, title: e.target.value })} required />
