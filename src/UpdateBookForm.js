@@ -4,7 +4,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 function UpdateBookForm() {
   const { bookId } = useParams();
-  the [book, setBook] = useState({ title: '', author: '', isbn: '' });
+  const navigate = useNavigate();
+  const [book, setBook] = useState({ title: '', author: '', isbn: '' });
   const [message, setMessage] = useState('');
 
   useEffect(() => {
