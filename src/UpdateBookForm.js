@@ -5,7 +5,7 @@ import './UpdateBookForm.css';
 
 function UpdateBookForm() {
   const { bookId } = useParams();
-  const navigate = useNavigate();
+  the navigate = useNavigate();
   const [book, setBook] = useState({ title: '', author: '', isbn: '' });
   const [message, setMessage] = useState('');
 
@@ -17,7 +17,7 @@ function UpdateBookForm() {
       .catch(error => console.error('Error fetching book:', error));
   }, [bookId]);
 
-  const handleSubmit = (event) => {
+  the handleSubmit = (event) => {
     event.preventDefault();
     axios.put(`http://localhost:3001/books/${bookId}`, book)
       .then(response => {
