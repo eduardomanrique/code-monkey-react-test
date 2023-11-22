@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import './BooksList.css';
 
 function BooksList() {
   const [books, setBooks] = useState([]);
@@ -14,16 +15,18 @@ function BooksList() {
   }, []);
 
   const handleDelete = (bookId) => {
-    axios.delete(`http://localhost:3001/books/${bookId}`)
-      .then(() => {
-        setBooks(books.filter(book => book.id !== bookId));
-        console.log('Book deleted');
-      })
-      .catch(error => console.error('Error deleting book:', error));
+    if (window.confirm('Are you sure you want to delete this book?')) {
+      axios.delete(`http://localhost:3001/books/${bookId}`)
+        .then(() => {
+          setBooks(books.filter(book => book.id !== bookId));
+          console.log('Book deleted');
+        })
+        .catch(error => console.error('Error deleting book:', error));
+    }
   };
 
   return (
-    <div>
+    <div className='booksList'>
       <h1>Books</h1>
       <table>
         <thead>

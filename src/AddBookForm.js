@@ -19,13 +19,13 @@ function AddBookForm() {
   return (
     <form className='addBookForm' onSubmit={handleSubmit}>
       <label>Title:
-        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+        <input type="text" placeholder="Enter book title" value={title} onChange={(e) => setTitle(e.target.value)} />
       </label>
       <label>Author:
-        <input type="text" value={author} onChange={(e) => setAuthor(e.target.value)} />
+        <input type="text" placeholder="Enter author's name" value={author} onChange={(e) => setAuthor(e.target.value)} />
       </label>
       <label>ISBN:
-        <input type="text" value={isbn} onChange={(e) => setIsbn(e.target.value)} />
+        <input type="text" placeholder="Enter ISBN" value={isbn} onChange={(e) => setIsbn(e.target.value)} />
       </label>
       <button type="submit">Add Book</button>
     </form>
