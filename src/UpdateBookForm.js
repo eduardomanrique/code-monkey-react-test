@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
-import './UpdateBookForm.css';
+import './AddBookForm.css';
 
 function UpdateBookForm() {
   const { bookId } = useParams();
-  the navigate = useNavigate();
+  const navigate = useNavigate();
   const [book, setBook] = useState({ title: '', author: '', isbn: '' });
   const [message, setMessage] = useState('');
 
@@ -17,7 +17,7 @@ function UpdateBookForm() {
       .catch(error => console.error('Error fetching book:', error));
   }, [bookId]);
 
-  the handleSubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     axios.put(`http://localhost:3001/books/${bookId}`, book)
       .then(response => {
@@ -31,7 +31,7 @@ function UpdateBookForm() {
   };
 
   return (
-    <div className='updateBookForm'>
+    <div className='addBookForm'>
       <form onSubmit={handleSubmit}>
         <label>Title:
           <input type="text" value={book.title} onChange={(e) => setBook({ ...book, title: e.target.value })} required />
