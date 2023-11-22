@@ -1,0 +1,46 @@
+.App {
+  font-family: 'Roboto', sans-serif;
+  background-image: linear-gradient(to right, #6DD5FA, #FF758C);
+}
+
+.navBar {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px 20px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navBar ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.navBar ul li {
+  margin: 0 10px;
+}
+
+.navBar a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navBar a:hover {
+  color: #FF758C;
+}
+
+.button {
+  background-image: linear-gradient(to right, #6DD5FA, #FF758C);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
