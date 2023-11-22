@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import './BooksList.css';
+import { FaEdit, FaTrash } from 'react-icons/fa';
 
 function BooksList() {
   const [books, setBooks] = useState([]);
@@ -15,18 +15,16 @@ function BooksList() {
   }, []);
 
   const handleDelete = (bookId) => {
-    if (window.confirm('Are you sure you want to delete this book?')) {
-      axios.delete(`http://localhost:3001/books/${bookId}`)
-        .then(() => {
-          setBooks(books.filter(book => book.id !== bookId));
-          console.log('Book deleted');
-        })
-        .catch(error => console.error('Error deleting book:', error));
-    }
+    axios.delete(`http://localhost:3001/books/${bookId}`)
+      .then(() => {
+        setBooks(books.filter(book => book.id !== bookId));
+        console.log('Book deleted');
+      })
+      .catch(error => console.error('Error deleting book:', error));
   };
 
   return (
-    <div className='booksList'>
+    <div>
       <h1>Books</h1>
       <table>
         <thead>
@@ -44,8 +42,8 @@ function BooksList() {
               <td>{book.author}</td>
               <td>{book.isbn}</td>
               <td>
-                <Link to={`/update-book/${book.id}`}>Update</Link>
-                <button onClick={() => handleDelete(book.id)}>Delete</button>
+                <Link to={`/update-book/${book.id}`}><FaEdit /></Link>
+                <button onClick={() => handleDelete(book.id)}><FaTrash /></button>
               </td>
             </tr>
           ))}
