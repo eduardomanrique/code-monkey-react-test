@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { FaHome, FaPlus, FaEdit } from 'react-icons/fa';
+import { FaHome, FaPlus, FaEdit, FaBook /* or other icons you need */ } from 'react-icons/fa';
 import BooksList from './BooksList';
 import AddBookForm from './AddBookForm';
 import UpdateBookForm from './UpdateBookForm';

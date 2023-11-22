@@ -6,7 +6,7 @@ function Home() {
       <h1>Welcome to Code Monkey's Library</h1>
       <p>Explore a world of knowledge and adventure.</p>
       <div style={imageContainerStyle}>
-        <img src='/path-to-your-library-image.jpg' alt='Library' style={imageStyle} />
+        <img src='/library.png' alt='Library' style={imageStyle} />
       </div>
     </div>
   );
