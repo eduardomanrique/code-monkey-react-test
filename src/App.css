@@ -10,6 +10,11 @@
   color: white;
 }
 
+.sideMenu a {
+  color: white;
+  text-decoration: none;
+}
+
 .sideMenu ul {
   list-style: none;
   padding: 0;
