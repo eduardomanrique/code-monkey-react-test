@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { FaEdit, FaTrash } from 'react-icons/fa';
+import './BooksList.css';
 
 function BooksList() {
   const [books, setBooks] = useState([]);
@@ -42,8 +43,8 @@ function BooksList() {
               <td>{book.author}</td>
               <td>{book.isbn}</td>
               <td>
-                <Link to={`/update-book/${book.id}`}><FaEdit /></Link>
-                <button onClick={() => handleDelete(book.id)}><FaTrash /></button>
+                <Link to={`/update-book/${book.id}`} className='link-style'><FaEdit /></Link>
+                <Link to='#' onClick={() => handleDelete(book.id)} className='link-style'><FaTrash /></Link>
               </td>
             </tr>
           ))}
