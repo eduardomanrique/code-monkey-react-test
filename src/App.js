@@ -4,6 +4,7 @@ import BooksList from './BooksList';
 import AddBookForm from './AddBookForm';
 import UpdateBookForm from './UpdateBookForm';
 import DeleteBook from './DeleteBook';
+import Home from './Home';
 
 function App() {
   return (
@@ -18,11 +19,11 @@ function App() {
           </ul>
         </nav>
         <Routes>
+          <Route path='/' element={<Home />} />
           <Route path='/books' element={<BooksList />} />
           <Route path='/add-book' element={<AddBookForm />} />
           <Route path='/update-book/:bookId' element={<UpdateBookForm />} />
           <Route path='/delete-book/:bookId' element={<DeleteBook />} />
-          <Route path='/' element={<div>Welcome to Code Monkey's Book Management</div>} />
         </Routes>
       </div>
     </Router>
