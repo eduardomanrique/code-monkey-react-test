@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import './UpdateBookForm.css';
 
 function UpdateBookForm() {
   const { bookId } = useParams();
+  const navigate = useNavigate();
   const [book, setBook] = useState({ title: '', author: '', isbn: '' });
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
     axios.get(`http://localhost:3001/books/${bookId}`)
@@ -18,24 +21,31 @@ function UpdateBookForm() {
     event.preventDefault();
     axios.put(`http://localhost:3001/books/${bookId}`, book)
       .then(response => {
-        console.log('Book updated:', response.data);
+        setMessage('Book updated successfully!');
+        setTimeout(() => navigate('/books'), 2000);
       })
-      .catch(error => console.error('Error updating book:', error));
+      .catch(error => {
+        console.error('Error updating book:', error);
+        setMessage('Error updating book.');
+      });
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>Title:
-        <input type="text" value={book.title} onChange={(e) => setBook({ ...book, title: e.target.value })} />
-      </label>
-      <label>Author:
-        <input type="text" value={book.author} onChange={(e) => setBook({ ...book, author: e.target.value })} />
-      </label>
-      <label>ISBN:
-        <input type="text" value={book.isbn} onChange={(e) => setBook({ ...book, isbn: e.target.value })} />
-      </label>
-      <button type="submit">Update Book</button>
-    </form>
+    <div>
+      <form className='updateBookForm' onSubmit={handleSubmit}>
+        <label>Title:
+          <input type="text" value={book.title} onChange={(e) => setBook({ ...book, title: e.target.value })} />
+        </label>
+        <label>Author:
+          <input type="text" value={book.author} onChange={(e) => setBook({ ...book, author: e.target.value })} />
+        </label>
+        <label>ISBN:
+          <input type="text" value={book.isbn} onChange={(e) => setBook({ ...book, isbn: e.target.value })} />
+        </label>
+        <button type="submit">Update Book</button>
+        {message && <p>{message}</p>}
+      </form>
+    </div>
   );
 }
 
